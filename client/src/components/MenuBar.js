@@ -77,16 +77,33 @@ const Tabs = ({ color }) => {
           <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
             <div className="px-4 py-5 flex-auto">
               <div className="tab-content tab-space">
-                <div className={openTab === 1 ? "block" : "hidden"} id="link1">
-                  <p>
-                    Collaboratively administrate empowered markets via
-                    plug-and-play networks. Dynamically procrastinate B2C users
-                    after installed base benefits.
-                    <br />
-                    <br /> Dramatically visualize customer directed convergence
-                    without revolutionary ROI.
-                  </p>
-                </div>
+              <div className="flex flex-wrap items-center justify-between">
+  <img
+    className="flex-shrink-0 w-20 h-20 border rounded"
+    src="https://images.unsplash.com/photo-1610552050890-fe99536c2615?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=907&q=80"
+    alt=""
+  />
+  <div className="flex-wrap text-left -ml-5">
+  <h5 className="mb-3">C Fresh</h5>
+  <span className="truncate flex items-center text-primary">
+    <i className="fas fa-map-marker-alt mr-2"></i>
+    IIIT Allahabad
+  </span>
+</div>
+
+  <div className="flex items-center">
+    <div className="text-primary mr-2">
+      <i className="far fa-calendar-alt"></i>
+    </div>
+    <span className="text-primary">3 March 2023</span>
+    <button className="ml-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+      Register
+    </button>
+  </div>
+</div>
+
+
+
                 <div className={openTab === 2 ? "block" : "hidden"} id="link2">
                   <p>
                     Completely synergize resource taxing relationships via

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import image from "../assets/logohome.png"
+import { Link } from 'react-router-dom';
+
 const NavbarH = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
@@ -13,9 +15,10 @@ const NavbarH = () => {
 
       <div class="flex items-center sm-hidden">
     <img class="h-16" src={image} alt="Logo"/>
-    <a class="text-lg font-medium text-black leading-none ml-2" href="#">
+    <Link to="/"><a class="text-lg font-medium hover:text-gray-600 text-black leading-none ml-2" href="#">
         Placeopedia
-    </a>
+    </a></Link>
+    
 </div>
         <div className="lg:hidden">
           <button
@@ -40,45 +43,52 @@ const NavbarH = () => {
           } lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6`}
         >
           <li className='hidden sm:block'>
-            <a className="text-lg font-medium text-black hover:text-gray-500" href="#">
+            <Link to="/"><a className="text-lg font-medium text-black hover:text-gray-600" href="#">
               Home
-            </a>
-          </li>
-          <li className="text-gray-300">
-           
-          </li>
-          <li className='hidden sm:block'>
-            <a className="text-lg font-medium text-black" href="#">
-            Opportunities
-            </a>
-          </li>
-          <li className="text-gray-300">
-           
-          </li>
-          <li className='hidden sm:block'>
-            <a className="text-lg font-medium text-black hover:text-gray-500" href="#">
-              Placements
-            </a>
-          </li>
-          <li className="text-gray-300">
+            </a></Link>
             
           </li>
-         
+          <li className="text-gray-300">
+           
+          </li>
+
+          <li className='hidden sm:block'>
+            <Link to="/opportunities"> <a className="text-lg font-medium hover:text-gray-600 text-black" href="#">
+            Opportunities
+            </a></Link>
+           
+          </li>
+          <li className="text-gray-300">
+           
+          </li>
+          <li className='hidden sm:block'>
+            <Link to="/placements"> <a className="text-lg font-medium text-black hover:text-gray-600" href="#">
+              Placements
+            </a></Link>
+           
+          </li>
+        
           
           
         </ul>
+
         <a
           className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200"
           href="#"
         >
-          Sign In
+          <Link to="/login"> Sign In</Link>
+         
         </a>
-        <a
+       
+       <Link to="/signup"> 
+       <a
           className="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200"
           href="#"
         >
           Sign up
         </a>
+        </Link>
+       
       </nav>
       <div className={`navbar-menu relative z-50 ${isMenuOpen ? '' : 'hidden'}`}>
         <div className="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
@@ -99,28 +109,31 @@ const NavbarH = () => {
           <div>
             <ul>
               <li className="mb-1">
-                <a
+                <Link to="/"> <a
                   className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
                   href="#"
                 >
                   Home
-                </a>
+                </a></Link>
+               
               </li>
               <li className="mb-1">
-                <a
+                <Link to="/opportunities"><a
                   className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
                   href="#"
                 >
                   Opportunities
-                </a>
+                </a></Link>
+                
               </li>
               <li className="mb-1">
-                <a
+                <Link to="/placements"> <a
                   className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
                   href="#"
                 >
                   Placements
-                </a>
+                </a></Link>
+               
               </li>
               
               
@@ -128,18 +141,23 @@ const NavbarH = () => {
           </div>
           <div className="mt-auto">
             <div className="pt-6">
-              <a
+              <Link to="/login">
+                 <a
                 className="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl"
                 href="#"
               >
                 Sign in
-              </a>
+              </a></Link>
+             
+             <Link to="/signup">
               <a
                 className="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl"
                 href="#"
               >
                 Sign Up
               </a>
+              </Link>
+              
             </div>
             <p className="my-4 text-xs text-center text-gray-400">
               <span>Copyright © 2021</span>

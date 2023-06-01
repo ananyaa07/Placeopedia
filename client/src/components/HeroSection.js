@@ -1,15 +1,15 @@
 import React from 'react'
-
+import image from "../assets/college.jpeg"
 export default function HeroSection() {
   return (
     <div >
       <section className="relative  bg-white">
 <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
-        <div className="absolute top-0 w-full h-full bg-center bg-cover" style={{
-  backgroundImage:
-    "url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80')",
-}}
->
+<div className="absolute top-0 w-full h-full bg-center bg-cover" style={{
+  backgroundImage: `url(${image})`
+}}>
+
+
           <span id="blackOverlay" className="w-full h-full absolute opacity-75 bg-black"></span>
         </div>
         <div className="container relative mx-auto">
@@ -17,12 +17,10 @@ export default function HeroSection() {
             <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
               <div className="pr-12">
                 <h1 className="text-white font-semibold text-5xl">
-                  Your story starts with us.
+                 Placeopedia
                 </h1>
                 <p className="mt-4 text-lg text-blueGray-200">
-                  This is a simple example of a Landing Page you can build using
-                  Notus JS. It features multiple CSS components based on the
-                  Tailwind CSS design system.
+                A "Wikipedia for Students" and a platform that provides valuable information about placement opportunities and various career prospects available to students. 
                 </p>
               </div>
             </div>
@@ -44,10 +42,9 @@ export default function HeroSection() {
                   <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400">
                     <i className="fas fa-award"></i>
                   </div>
-                  <h6 className="text-xl font-semibold">Awarded Agency</h6>
+                  <h6 className="text-xl font-semibold">Opportunities</h6>
                   <p className="mt-2 mb-4 text-blueGray-500">
-                    Divide details about your product or agency work into parts.
-                    A paragraph describing a feature will be enough.
+                  The "Opportunities" section is a dedicated space that showcases the diverse range of opportunities available to students within our college.
                   </p>
                 </div>
               </div>
@@ -56,12 +53,14 @@ export default function HeroSection() {
               <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                 <div className="px-4 py-5 flex-auto">
                   <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-lightBlue-400">
-                    <i className="fas fa-retweet"></i>
+                    <i className="fas fa-graduation-cap"></i>
                   </div>
-                  <h6 className="text-xl font-semibold">Free Revisions</h6>
+                  <h6 className="text-xl font-semibold">Inspiration</h6>
                   <p className="mt-2 mb-4 text-blueGray-500">
-                    Keep you user engaged by providing meaningful information.
-                    Remember that by this time, the user is curious.
+                  The section showcasing inspiring stories of college alumni and their journeys provides a platform to highlight the experiences of former students. I
+                   
+
+
                   </p>
                 </div>
               </div>
@@ -70,12 +69,11 @@ export default function HeroSection() {
               <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                 <div className="px-4 py-5 flex-auto">
                   <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-emerald-400">
-                    <i className="fas fa-fingerprint"></i>
+                    <i className="fas fa-star"></i>
                   </div>
-                  <h6 className="text-xl font-semibold">Verified Company</h6>
+                  <h6 className="text-xl font-semibold">Recognition</h6>
                   <p className="mt-2 mb-4 text-blueGray-500">
-                    Write a few lines about each one. A paragraph describing a
-                    feature will be enough. Keep you user engaged!
+                    A chance to get recognized for your work and achievements in college.A chance to motivate others and maintain legacy.
                   </p>
                 </div>
               </div>
