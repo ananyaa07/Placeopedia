@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -7,53 +8,51 @@ export default function Footer() {
         <div className="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
           <nav className="flex flex-wrap justify-center -mx-5 -my-2">
             <div className="px-5 py-2">
-              <a
+              <Link to="/">  <a
                 href="#"
-                className="text-base leading-6 text-white hover:text-gray-900"
+                className="text-base leading-6 text-white hover:text-gray-500"
               >
-                About
-              </a>
+                Home
+              </a></Link>
+            
             </div>
             <div className="px-5 py-2">
-              <a
+              <Link to="/opportunities"><a
                 href="#"
-                className="text-base leading-6 text-white hover:text-gray-900"
+                className="text-base leading-6 text-white hover:text-gray-500"
               >
-                Blog
-              </a>
+                Opportunities
+              </a></Link>
+              
             </div>
             <div className="px-5 py-2">
-              <a
+              <Link to ="/placements"> <a
                 href="#"
-                className="text-base leading-6 text-white hover:text-gray-900"
+                className="text-base leading-6 text-white hover:text-gray-500"
               >
-                Team
-              </a>
+               Placements
+              </a></Link>
+             
             </div>
             <div className="px-5 py-2">
-              <a
+              <Link to="/login"> <a
                 href="#"
-                className="text-base leading-6 text-white hover:text-gray-900"
+                className="text-base leading-6 text-white hover:text-gray-500"
               >
-                Pricing
-              </a>
+                Login
+              </a></Link>
+             
             </div>
             <div className="px-5 py-2">
-              <a
+              <Link to="/signup"><a
                 href="#"
-                className="text-base leading-6 text-white hover:text-gray-900"
+                className="text-base leading-6 text-white hover:text-gray-500"
               >
-                Contact
-              </a>
+             Signup
+              </a></Link>
+              
             </div>
-            <div className="px-5 py-2">
-              <a
-                href="#"
-                className="text-base leading-6 text-white hover:text-gray-900"
-              >
-                Terms
-              </a>
-            </div>
+           
           </nav>
           <div className="flex justify-center mt-8 space-x-6">
             <a href="#" className="text-white hover:text-gray-500">
@@ -129,7 +128,7 @@ export default function Footer() {
             </a>
           </div>
           <p className="mt-8 text-base leading-6 text-center text-white">
-            © 2021 SomeCompany, Inc. All rights reserved.
+            &copy; 2023 Placeopedia. All rights reserved.
           </p>
         </div>
       </section>

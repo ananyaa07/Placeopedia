@@ -24,11 +24,11 @@ export default function Example() {
           />
         </CardHeader>
         <CardBody>
-          <Typography variant="h6" color="blue" className="uppercase mb-4">
-            startups
+          <Typography variant="h6"  className="uppercase mb-4 text-gray-700" >
+         Name of Person
           </Typography>
           <Typography variant="h4" color="blue-gray" className="mb-2">
-            Lyft launching cross-platform service this week
+           About Topic
           </Typography>
           <Typography color="gray" className="font-normal mb-8">
             Like so many organizations these days, Autodesk is a company in
@@ -37,7 +37,7 @@ export default function Example() {
             only part of the story
           </Typography>
           <a href="#" className="inline-block">
-            <Button variant="text" className="flex items-center gap-2">
+            <Button variant="text" className="flex items-center text-black hover:bg-gray-200 bg-gray-100 gap-2">
               Learn More
               <ArrowLongRightIcon strokeWidth={2} className="w-4 h-4" />
             </Button>
