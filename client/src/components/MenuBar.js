@@ -75,27 +75,28 @@ const Tabs = ({ color }) => {
             </li>
           </ul>
 
-
-          
           <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
             <div className="px-4 py-5 flex-auto">
               <div className="tab-content tab-space">
-                <div className={`flex flex-wrap items-center justify-between ${openTab === 1 ? "block" : "hidden"}`}>
+                <div
+                  className={`flex flex-wrap items-center justify-between ${
+                    openTab === 1 ? "block" : "hidden"
+                  }`}
+                >
                   <div className="flex flex-wrap items-center justify-between">
                     <img
-                    className="flex-shrink-0 w-20 h-20 border rounded"
-                    src="https://images.unsplash.com/photo-1610552050890-fe99536c2615?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=907&q=80"
-                    alt=""
-                  />
-                  <div className="flex-wrap text-left ml-6">
-                    <h5 className="mb-3">C Fresh</h5>
-                    <span className="truncate flex items-center text-primary">
-                      <i className="fas fa-map-marker-alt mr-2"></i>
-                      IIIT Allahabad
-                    </span>
+                      className="flex-shrink-0 w-20 h-20 border rounded"
+                      src="https://images.unsplash.com/photo-1610552050890-fe99536c2615?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=907&q=80"
+                      alt=""
+                    />
+                    <div className="flex-wrap text-left ml-6">
+                      <h5 className="mb-3">C Fresh</h5>
+                      <span className="truncate flex items-center text-primary">
+                        <i className="fas fa-map-marker-alt mr-2"></i>
+                        IIIT Allahabad
+                      </span>
+                    </div>
                   </div>
-                  </div>
-                  
 
                   <div className="flex items-center flex-col justify-center">
                     <button className=" bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
@@ -103,27 +104,30 @@ const Tabs = ({ color }) => {
                     </button>
                     <div className="text-primary mr-2 mt-2">
                       <i className="far fa-calendar-alt mr-2"></i>
-                       <span className="text-primary">3 March 2023</span>
+                      <span className="text-primary">3 March 2023</span>
                     </div>
                   </div>
                 </div>
 
-                <div className={`flex flex-wrap items-center justify-between ${openTab === 2 ? "block" : "hidden"}`}>
+                <div
+                  className={`flex flex-wrap items-center justify-between ${
+                    openTab === 2 ? "block" : "hidden"
+                  }`}
+                >
                   <div className="flex flex-wrap items-center justify-between">
                     <img
-                    className="flex-shrink-0 w-20 h-20 border rounded"
-                    src="https://images.unsplash.com/photo-1610552050890-fe99536c2615?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=907&q=80"
-                    alt=""
-                  />
-                  <div className="flex-wrap text-left ml-6">
-                    <h5 className="mb-3">C Fresh</h5>
-                    <span className="truncate flex items-center text-primary">
-                      <i className="fas fa-map-marker-alt mr-2"></i>
-                      IIIT Allahabad
-                    </span>
+                      className="flex-shrink-0 w-20 h-20 border rounded"
+                      src="https://images.unsplash.com/photo-1610552050890-fe99536c2615?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=907&q=80"
+                      alt=""
+                    />
+                    <div className="flex-wrap text-left ml-6">
+                      <h5 className="mb-3">C Fresh</h5>
+                      <span className="truncate flex items-center text-primary">
+                        <i className="fas fa-map-marker-alt mr-2"></i>
+                        IIIT Allahabad
+                      </span>
+                    </div>
                   </div>
-                  </div>
-                  
 
                   <div className="flex items-center flex-col justify-center">
                     <button className=" bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
@@ -131,26 +135,29 @@ const Tabs = ({ color }) => {
                     </button>
                     <div className="text-primary mr-2 mt-2">
                       <i className="far fa-calendar-alt mr-2"></i>
-                       <span className="text-primary">3 March 2023</span>
+                      <span className="text-primary">3 March 2023</span>
                     </div>
                   </div>
                 </div>
-                <div className={`flex flex-wrap items-center justify-between ${openTab === 3 ? "block" : "hidden"}`}>
+                <div
+                  className={`flex flex-wrap items-center justify-between ${
+                    openTab === 3 ? "block" : "hidden"
+                  }`}
+                >
                   <div className="flex flex-wrap items-center justify-between">
                     <img
-                    className="flex-shrink-0 w-20 h-20 border rounded"
-                    src="https://images.unsplash.com/photo-1610552050890-fe99536c2615?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=907&q=80"
-                    alt=""
-                  />
-                  <div className="flex-wrap text-left ml-6">
-                    <h5 className="mb-3">C Fresh</h5>
-                    <span className="truncate flex items-center text-primary">
-                      <i className="fas fa-map-marker-alt mr-2"></i>
-                      IIIT Allahabad
-                    </span>
+                      className="flex-shrink-0 w-20 h-20 border rounded"
+                      src="https://images.unsplash.com/photo-1610552050890-fe99536c2615?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=907&q=80"
+                      alt=""
+                    />
+                    <div className="flex-wrap text-left ml-6">
+                      <h5 className="mb-3">C Fresh</h5>
+                      <span className="truncate flex items-center text-primary">
+                        <i className="fas fa-map-marker-alt mr-2"></i>
+                        IIIT Allahabad
+                      </span>
+                    </div>
                   </div>
-                  </div>
-                  
 
                   <div className="flex items-center flex-col justify-center">
                     <button className=" bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
@@ -158,7 +165,7 @@ const Tabs = ({ color }) => {
                     </button>
                     <div className="text-primary mr-2 mt-2">
                       <i className="far fa-calendar-alt mr-2"></i>
-                       <span className="text-primary">3 March 2023</span>
+                      <span className="text-primary">3 March 2023</span>
                     </div>
                   </div>
                 </div>
@@ -169,22 +176,25 @@ const Tabs = ({ color }) => {
           <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
             <div className="px-4 py-5 flex-auto">
               <div className="tab-content tab-space">
-                <div className={`flex flex-wrap items-center justify-between ${openTab === 1 ? "block" : "hidden"}`}>
+                <div
+                  className={`flex flex-wrap items-center justify-between ${
+                    openTab === 1 ? "block" : "hidden"
+                  }`}
+                >
                   <div className="flex flex-wrap items-center justify-between">
                     <img
-                    className="flex-shrink-0 w-20 h-20 border rounded"
-                    src="https://images.unsplash.com/photo-1610552050890-fe99536c2615?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=907&q=80"
-                    alt=""
-                  />
-                  <div className="flex-wrap text-left ml-6">
-                    <h5 className="mb-3">C Fresh</h5>
-                    <span className="truncate flex items-center text-primary">
-                      <i className="fas fa-map-marker-alt mr-2"></i>
-                      IIIT Allahabad
-                    </span>
+                      className="flex-shrink-0 w-20 h-20 border rounded"
+                      src="https://images.unsplash.com/photo-1610552050890-fe99536c2615?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=907&q=80"
+                      alt=""
+                    />
+                    <div className="flex-wrap text-left ml-6">
+                      <h5 className="mb-3">C Fresh</h5>
+                      <span className="truncate flex items-center text-primary">
+                        <i className="fas fa-map-marker-alt mr-2"></i>
+                        IIIT Allahabad
+                      </span>
+                    </div>
                   </div>
-                  </div>
-                  
 
                   <div className="flex items-center flex-col justify-center">
                     <button className=" bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
@@ -192,27 +202,30 @@ const Tabs = ({ color }) => {
                     </button>
                     <div className="text-primary mr-2 mt-2">
                       <i className="far fa-calendar-alt mr-2"></i>
-                       <span className="text-primary">3 March 2023</span>
+                      <span className="text-primary">3 March 2023</span>
                     </div>
                   </div>
                 </div>
 
-                <div className={`flex flex-wrap items-center justify-between ${openTab === 2 ? "block" : "hidden"}`}>
+                <div
+                  className={`flex flex-wrap items-center justify-between ${
+                    openTab === 2 ? "block" : "hidden"
+                  }`}
+                >
                   <div className="flex flex-wrap items-center justify-between">
                     <img
-                    className="flex-shrink-0 w-20 h-20 border rounded"
-                    src="https://images.unsplash.com/photo-1610552050890-fe99536c2615?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=907&q=80"
-                    alt=""
-                  />
-                  <div className="flex-wrap text-left ml-6">
-                    <h5 className="mb-3">C Fresh</h5>
-                    <span className="truncate flex items-center text-primary">
-                      <i className="fas fa-map-marker-alt mr-2"></i>
-                      IIIT Allahabad
-                    </span>
+                      className="flex-shrink-0 w-20 h-20 border rounded"
+                      src="https://images.unsplash.com/photo-1610552050890-fe99536c2615?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=907&q=80"
+                      alt=""
+                    />
+                    <div className="flex-wrap text-left ml-6">
+                      <h5 className="mb-3">C Fresh</h5>
+                      <span className="truncate flex items-center text-primary">
+                        <i className="fas fa-map-marker-alt mr-2"></i>
+                        IIIT Allahabad
+                      </span>
+                    </div>
                   </div>
-                  </div>
-                  
 
                   <div className="flex items-center flex-col justify-center">
                     <button className=" bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
@@ -220,26 +233,29 @@ const Tabs = ({ color }) => {
                     </button>
                     <div className="text-primary mr-2 mt-2">
                       <i className="far fa-calendar-alt mr-2"></i>
-                       <span className="text-primary">3 March 2023</span>
+                      <span className="text-primary">3 March 2023</span>
                     </div>
                   </div>
                 </div>
-                <div className={`flex flex-wrap items-center justify-between ${openTab === 3 ? "block" : "hidden"}`}>
+                <div
+                  className={`flex flex-wrap items-center justify-between ${
+                    openTab === 3 ? "block" : "hidden"
+                  }`}
+                >
                   <div className="flex flex-wrap items-center justify-between">
                     <img
-                    className="flex-shrink-0 w-20 h-20 border rounded"
-                    src="https://images.unsplash.com/photo-1610552050890-fe99536c2615?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=907&q=80"
-                    alt=""
-                  />
-                  <div className="flex-wrap text-left ml-6">
-                    <h5 className="mb-3">C Fresh</h5>
-                    <span className="truncate flex items-center text-primary">
-                      <i className="fas fa-map-marker-alt mr-2"></i>
-                      IIIT Allahabad
-                    </span>
+                      className="flex-shrink-0 w-20 h-20 border rounded"
+                      src="https://images.unsplash.com/photo-1610552050890-fe99536c2615?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=907&q=80"
+                      alt=""
+                    />
+                    <div className="flex-wrap text-left ml-6">
+                      <h5 className="mb-3">C Fresh</h5>
+                      <span className="truncate flex items-center text-primary">
+                        <i className="fas fa-map-marker-alt mr-2"></i>
+                        IIIT Allahabad
+                      </span>
+                    </div>
                   </div>
-                  </div>
-                  
 
                   <div className="flex items-center flex-col justify-center">
                     <button className=" bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
@@ -247,7 +263,7 @@ const Tabs = ({ color }) => {
                     </button>
                     <div className="text-primary mr-2 mt-2">
                       <i className="far fa-calendar-alt mr-2"></i>
-                       <span className="text-primary">3 March 2023</span>
+                      <span className="text-primary">3 March 2023</span>
                     </div>
                   </div>
                 </div>
@@ -258,22 +274,25 @@ const Tabs = ({ color }) => {
           <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
             <div className="px-4 py-5 flex-auto">
               <div className="tab-content tab-space">
-                <div className={`flex flex-wrap items-center justify-between ${openTab === 1 ? "block" : "hidden"}`}>
+                <div
+                  className={`flex flex-wrap items-center justify-between ${
+                    openTab === 1 ? "block" : "hidden"
+                  }`}
+                >
                   <div className="flex flex-wrap items-center justify-between">
                     <img
-                    className="flex-shrink-0 w-20 h-20 border rounded"
-                    src="https://images.unsplash.com/photo-1610552050890-fe99536c2615?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=907&q=80"
-                    alt=""
-                  />
-                  <div className="flex-wrap text-left ml-6">
-                    <h5 className="mb-3">C Fresh</h5>
-                    <span className="truncate flex items-center text-primary">
-                      <i className="fas fa-map-marker-alt mr-2"></i>
-                      IIIT Allahabad
-                    </span>
+                      className="flex-shrink-0 w-20 h-20 border rounded"
+                      src="https://images.unsplash.com/photo-1610552050890-fe99536c2615?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=907&q=80"
+                      alt=""
+                    />
+                    <div className="flex-wrap text-left ml-6">
+                      <h5 className="mb-3">C Fresh</h5>
+                      <span className="truncate flex items-center text-primary">
+                        <i className="fas fa-map-marker-alt mr-2"></i>
+                        IIIT Allahabad
+                      </span>
+                    </div>
                   </div>
-                  </div>
-                  
 
                   <div className="flex items-center flex-col justify-center">
                     <button className=" bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
@@ -281,26 +300,29 @@ const Tabs = ({ color }) => {
                     </button>
                     <div className="text-primary mr-2 mt-2">
                       <i className="far fa-calendar-alt mr-2"></i>
-                       <span className="text-primary">3 March 2023</span>
+                      <span className="text-primary">3 March 2023</span>
                     </div>
                   </div>
                 </div>
-                <div className={`flex flex-wrap items-center justify-between ${openTab === 2 ? "block" : "hidden"}`}>
+                <div
+                  className={`flex flex-wrap items-center justify-between ${
+                    openTab === 2 ? "block" : "hidden"
+                  }`}
+                >
                   <div className="flex flex-wrap items-center justify-between">
                     <img
-                    className="flex-shrink-0 w-20 h-20 border rounded"
-                    src="https://images.unsplash.com/photo-1610552050890-fe99536c2615?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=907&q=80"
-                    alt=""
-                  />
-                  <div className="flex-wrap text-left ml-6">
-                    <h5 className="mb-3">C Fresh</h5>
-                    <span className="truncate flex items-center text-primary">
-                      <i className="fas fa-map-marker-alt mr-2"></i>
-                      IIIT Allahabad
-                    </span>
+                      className="flex-shrink-0 w-20 h-20 border rounded"
+                      src="https://images.unsplash.com/photo-1610552050890-fe99536c2615?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=907&q=80"
+                      alt=""
+                    />
+                    <div className="flex-wrap text-left ml-6">
+                      <h5 className="mb-3">C Fresh</h5>
+                      <span className="truncate flex items-center text-primary">
+                        <i className="fas fa-map-marker-alt mr-2"></i>
+                        IIIT Allahabad
+                      </span>
+                    </div>
                   </div>
-                  </div>
-                  
 
                   <div className="flex items-center flex-col justify-center">
                     <button className=" bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
@@ -308,26 +330,29 @@ const Tabs = ({ color }) => {
                     </button>
                     <div className="text-primary mr-2 mt-2">
                       <i className="far fa-calendar-alt mr-2"></i>
-                       <span className="text-primary">3 March 2023</span>
+                      <span className="text-primary">3 March 2023</span>
                     </div>
                   </div>
                 </div>
-                <div className={`flex flex-wrap items-center justify-between ${openTab === 3 ? "block" : "hidden"}`}>
+                <div
+                  className={`flex flex-wrap items-center justify-between ${
+                    openTab === 3 ? "block" : "hidden"
+                  }`}
+                >
                   <div className="flex flex-wrap items-center justify-between">
                     <img
-                    className="flex-shrink-0 w-20 h-20 border rounded"
-                    src="https://images.unsplash.com/photo-1610552050890-fe99536c2615?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=907&q=80"
-                    alt=""
-                  />
-                  <div className="flex-wrap text-left ml-6">
-                    <h5 className="mb-3">C Fresh</h5>
-                    <span className="truncate flex items-center text-primary">
-                      <i className="fas fa-map-marker-alt mr-2"></i>
-                      IIIT Allahabad
-                    </span>
+                      className="flex-shrink-0 w-20 h-20 border rounded"
+                      src="https://images.unsplash.com/photo-1610552050890-fe99536c2615?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=907&q=80"
+                      alt=""
+                    />
+                    <div className="flex-wrap text-left ml-6">
+                      <h5 className="mb-3">C Fresh</h5>
+                      <span className="truncate flex items-center text-primary">
+                        <i className="fas fa-map-marker-alt mr-2"></i>
+                        IIIT Allahabad
+                      </span>
+                    </div>
                   </div>
-                  </div>
-                  
 
                   <div className="flex items-center flex-col justify-center">
                     <button className=" bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
@@ -335,7 +360,7 @@ const Tabs = ({ color }) => {
                     </button>
                     <div className="text-primary mr-2 mt-2">
                       <i className="far fa-calendar-alt mr-2"></i>
-                       <span className="text-primary">3 March 2023</span>
+                      <span className="text-primary">3 March 2023</span>
                     </div>
                   </div>
                 </div>
@@ -347,7 +372,6 @@ const Tabs = ({ color }) => {
     </>
   );
 };
-
 
 export default function TabsRender() {
   return (
