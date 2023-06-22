@@ -1,11 +1,11 @@
 const express=require('express');
 const router=express.Router();
 
-const {createOpportunity,getAllOpportunities,updateOpportunity,deleteOpportunity}=require('../controllers/opportunities');
+const {getAllOpportunities,updateOpportunity,deleteOpportunity}=require('../controllers/opportunities');
+const {verifyUser,verifyAdmin}=require('../middleware/verifyUser');
 
-router.route('/').post(createOpportunity);
-router.route('/:category').get(getAllOpportunities);
-router.route('/:id').patch(updateOpportunity).delete(deleteOpportunity);
+router.route('/:category').get(verifyUser, getAllOpportunities);
+router.route('/:id').patch(verifyAdmin, updateOpportunity).delete(verifyAdmin, deleteOpportunity);
 
 
 module.exports=router;

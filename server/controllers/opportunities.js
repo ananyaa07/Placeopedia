@@ -1,22 +1,97 @@
+const { S3Client, PutObjectCommand, GetObjectCommand } = require("@aws-sdk/client-s3");
+const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
+const crypto = require("crypto");
+const dotenv = require("dotenv");
 const Opportunity = require("../models/opportunity");
+
+dotenv.config();
+
+const bucketName = process.env.BUCKET_NAME;
+const region = process.env.BUCKET_REGION;
+const accessKeyId = process.env.ACCESS_KEY;
+const secretAccessKey = process.env.SECRET_ACCESS_KEY;
+
+const s3 = new S3Client({
+  credentials: {
+    accessKeyId,
+    secretAccessKey,
+  },
+  region,
+});
 
 //get all opportunities
 const getAllOpportunities = async (req, res) => {
+  try {
     const { category } = req.params;
     const opportunities = await Opportunity.find({ category });
+    await Promise.all(
+      opportunities.map(async (opportunity) => {
+        const getObjectParams = {
+          Bucket: bucketName,
+          Key: opportunity.imageName,
+        };
+
+        const command = new GetObjectCommand(getObjectParams);
+        const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
+        opportunity.imageUrl = url;
+        return opportunity;
+      })
+    );
     res.status(200).json({ opportunities });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 };
 
 //create opportunity
 const createOpportunity = async (req, res) => {
-    const opportunity = await Opportunity.create(req.body);
+  try {
+    const {
+      name,
+      category,
+      location,
+      date,
+      registrationLink
+    } = req.body;
+
+    // Generate a random name for the image
+    const randomImgName = (bytes = 16) =>
+      crypto.randomBytes(bytes).toString("hex");
+    const imageName = randomImgName();
+
+    // Upload the image to S3
+    const params = {
+      Bucket: bucketName,
+      Key: imageName,
+      Body: req.file.buffer,
+      ContentType: req.file.mimetype,
+    };
+
+    const command = new PutObjectCommand(params);
+    const result = await s3.send(command);
+
+    // Create a new opportunity document in the database
+    const opportunity = new Opportunity({
+      name,
+      category,
+      location,
+      date,
+      registrationLink,
+      imageName
+    });
+    await opportunity.save();
+
     res.status(201).json({ opportunity });
-  };
-  
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: error.message });
+  }
+};
+
 //update opportunity
 const updateOpportunity = async (req, res) => {
   const {
-    params: {id: opportunityId },
+    params: { id: opportunityId },
     body,
   } = req;
 
