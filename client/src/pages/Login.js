@@ -3,10 +3,20 @@ import image from "../assets/image.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Navbar from "../components/NavbarL";
+import {loginUser} from "../utils/API/auth.js"
 
 
 function Login({ setLoggedIn }) {
 	
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    loginUser(email,password)
+    .then((res) => {
+    })
+  }
+
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -49,7 +59,8 @@ function Login({ setLoggedIn }) {
                 type="text"
                 id="email"
                 name="email"
-               
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email address"
                 className="w-full px-4 py-3 bg-gray-200 border-gray-300 rounded-lg"
               />
@@ -61,6 +72,8 @@ function Login({ setLoggedIn }) {
                 name="password"
                 placeholder="Enter password"
                 className="w-full px-4 py-3 bg-gray-200 border-gray-300 rounded-lg"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <button
                 type="button"
@@ -91,6 +104,7 @@ function Login({ setLoggedIn }) {
             <button
               type="submit"
               className="w-full mt-1 lg:mt-3 px-4 py-3 bg-gray-500 text-white font-semibold rounded-lg shadow-lg"
+              onClick={handleSubmit}
             >
               SIGN IN
             </button>

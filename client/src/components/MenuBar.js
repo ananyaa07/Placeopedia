@@ -1,7 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import {getAllOpportunities} from "../utils/API/opportunities.js"
+
+
 
 const Tabs = ({ color }) => {
   const [openTab, setOpenTab] = React.useState(1);
+  const[category,setCategory]=useState("events");
+  const [opportunities, setOpportunities] = useState([]);
+
+  useEffect(() => {
+    async function fetchOpportunities() {
+      try {
+        console.log("fetching opportunities");
+        getAllOpportunities(category).then((response)=>{
+          setOpportunities(response.opportunities);
+           console.log("response",response);
+        })
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchOpportunities();
+  }, [category]);
+  
   return (
     <>
       <div className="text-center max-w-xl mx-auto mt-32">
@@ -26,13 +49,14 @@ const Tabs = ({ color }) => {
                 }
                 onClick={(e) => {
                   e.preventDefault();
+                  setCategory("events");
                   setOpenTab(1);
                 }}
                 data-toggle="tab"
                 href="#link1"
                 role="tablist"
               >
-                Profile
+                Events
               </a>
             </li>
             <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
@@ -45,13 +69,14 @@ const Tabs = ({ color }) => {
                 }
                 onClick={(e) => {
                   e.preventDefault();
+                  setCategory("internships"); 
                   setOpenTab(2);
                 }}
                 data-toggle="tab"
                 href="#link2"
                 role="tablist"
               >
-                Settings
+                Internships
               </a>
             </li>
             <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
@@ -64,309 +89,60 @@ const Tabs = ({ color }) => {
                 }
                 onClick={(e) => {
                   e.preventDefault();
+                  setCategory("hackathons");
                   setOpenTab(3);
                 }}
                 data-toggle="tab"
                 href="#link3"
                 role="tablist"
               >
-                Options
+                Hackathons
               </a>
             </li>
           </ul>
 
-          <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
-            <div className="px-4 py-5 flex-auto">
-              <div className="tab-content tab-space">
-                <div
-                  className={`flex flex-wrap items-center justify-between ${
-                    openTab === 1 ? "block" : "hidden"
-                  }`}
-                >
-                  <div className="flex flex-wrap items-center justify-between">
-                    <img
-                      className="flex-shrink-0 w-20 h-20 border rounded"
-                      src="https://images.unsplash.com/photo-1610552050890-fe99536c2615?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=907&q=80"
-                      alt=""
-                    />
-                    <div className="flex-wrap text-left ml-6">
-                      <h5 className="mb-3">C Fresh</h5>
-                      <span className="truncate flex items-center text-primary">
-                        <i className="fas fa-map-marker-alt mr-2"></i>
-                        IIIT Allahabad
-                      </span>
-                    </div>
-                  </div>
 
-                  <div className="flex items-center flex-col justify-center">
-                    <button className=" bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-                      Register
-                    </button>
-                    <div className="text-primary mr-2 mt-2">
-                      <i className="far fa-calendar-alt mr-2"></i>
-                      <span className="text-primary">3 March 2023</span>
-                    </div>
-                  </div>
-                </div>
 
-                <div
-                  className={`flex flex-wrap items-center justify-between ${
-                    openTab === 2 ? "block" : "hidden"
-                  }`}
-                >
-                  <div className="flex flex-wrap items-center justify-between">
-                    <img
-                      className="flex-shrink-0 w-20 h-20 border rounded"
-                      src="https://images.unsplash.com/photo-1610552050890-fe99536c2615?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=907&q=80"
-                      alt=""
-                    />
-                    <div className="flex-wrap text-left ml-6">
-                      <h5 className="mb-3">C Fresh</h5>
-                      <span className="truncate flex items-center text-primary">
-                        <i className="fas fa-map-marker-alt mr-2"></i>
-                        IIIT Allahabad
-                      </span>
-                    </div>
-                  </div>
 
-                  <div className="flex items-center flex-col justify-center">
-                    <button className=" bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-                      Register
-                    </button>
-                    <div className="text-primary mr-2 mt-2">
-                      <i className="far fa-calendar-alt mr-2"></i>
-                      <span className="text-primary">3 March 2023</span>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className={`flex flex-wrap items-center justify-between ${
-                    openTab === 3 ? "block" : "hidden"
-                  }`}
-                >
-                  <div className="flex flex-wrap items-center justify-between">
-                    <img
-                      className="flex-shrink-0 w-20 h-20 border rounded"
-                      src="https://images.unsplash.com/photo-1610552050890-fe99536c2615?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=907&q=80"
-                      alt=""
-                    />
-                    <div className="flex-wrap text-left ml-6">
-                      <h5 className="mb-3">C Fresh</h5>
-                      <span className="truncate flex items-center text-primary">
-                        <i className="fas fa-map-marker-alt mr-2"></i>
-                        IIIT Allahabad
-                      </span>
-                    </div>
-                  </div>
 
-                  <div className="flex items-center flex-col justify-center">
-                    <button className=" bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-                      Register
-                    </button>
-                    <div className="text-primary mr-2 mt-2">
-                      <i className="far fa-calendar-alt mr-2"></i>
-                      <span className="text-primary">3 March 2023</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          {opportunities.length!==0 && opportunities.map((opportunity,index) => (
+  <div
+    className={`flex flex-wrap items-center justify-between ${
+      openTab === index + 1 ? "block" : "hidden"
+    }`}
+    key={index}
+  >
+    <div className="flex flex-wrap items-center justify-between">
+      <img
+        className="flex-shrink-0 w-20 h-20 border rounded"
+        src={opportunity.imageUrl}
+        alt=""
+      />
+      <div className="flex-wrap text-left ml-6">
+        <h5 className="mb-3">{opportunity.title}</h5>
+        <span className="truncate flex items-center text-primary">
+          <i className="fas fa-map-marker-alt mr-2"></i>
+          {opportunity.location}
+        </span>
+      </div>
+    </div>
 
-          <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
-            <div className="px-4 py-5 flex-auto">
-              <div className="tab-content tab-space">
-                <div
-                  className={`flex flex-wrap items-center justify-between ${
-                    openTab === 1 ? "block" : "hidden"
-                  }`}
-                >
-                  <div className="flex flex-wrap items-center justify-between">
-                    <img
-                      className="flex-shrink-0 w-20 h-20 border rounded"
-                      src="https://images.unsplash.com/photo-1610552050890-fe99536c2615?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=907&q=80"
-                      alt=""
-                    />
-                    <div className="flex-wrap text-left ml-6">
-                      <h5 className="mb-3">C Fresh</h5>
-                      <span className="truncate flex items-center text-primary">
-                        <i className="fas fa-map-marker-alt mr-2"></i>
-                        IIIT Allahabad
-                      </span>
-                    </div>
-                  </div>
+    <div className="flex items-center flex-col justify-center">
+      <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+        Register
+      </button>
+      <div className="text-primary mr-2 mt-2">
+        <i className="far fa-calendar-alt mr-2"></i>
+        <span className="text-primary">{opportunity.date}</span>
+      </div>
+    </div>
+  </div>
+))}
 
-                  <div className="flex items-center flex-col justify-center">
-                    <button className=" bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-                      Register
-                    </button>
-                    <div className="text-primary mr-2 mt-2">
-                      <i className="far fa-calendar-alt mr-2"></i>
-                      <span className="text-primary">3 March 2023</span>
-                    </div>
-                  </div>
-                </div>
 
-                <div
-                  className={`flex flex-wrap items-center justify-between ${
-                    openTab === 2 ? "block" : "hidden"
-                  }`}
-                >
-                  <div className="flex flex-wrap items-center justify-between">
-                    <img
-                      className="flex-shrink-0 w-20 h-20 border rounded"
-                      src="https://images.unsplash.com/photo-1610552050890-fe99536c2615?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=907&q=80"
-                      alt=""
-                    />
-                    <div className="flex-wrap text-left ml-6">
-                      <h5 className="mb-3">C Fresh</h5>
-                      <span className="truncate flex items-center text-primary">
-                        <i className="fas fa-map-marker-alt mr-2"></i>
-                        IIIT Allahabad
-                      </span>
-                    </div>
-                  </div>
+         
 
-                  <div className="flex items-center flex-col justify-center">
-                    <button className=" bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-                      Register
-                    </button>
-                    <div className="text-primary mr-2 mt-2">
-                      <i className="far fa-calendar-alt mr-2"></i>
-                      <span className="text-primary">3 March 2023</span>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className={`flex flex-wrap items-center justify-between ${
-                    openTab === 3 ? "block" : "hidden"
-                  }`}
-                >
-                  <div className="flex flex-wrap items-center justify-between">
-                    <img
-                      className="flex-shrink-0 w-20 h-20 border rounded"
-                      src="https://images.unsplash.com/photo-1610552050890-fe99536c2615?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=907&q=80"
-                      alt=""
-                    />
-                    <div className="flex-wrap text-left ml-6">
-                      <h5 className="mb-3">C Fresh</h5>
-                      <span className="truncate flex items-center text-primary">
-                        <i className="fas fa-map-marker-alt mr-2"></i>
-                        IIIT Allahabad
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center flex-col justify-center">
-                    <button className=" bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-                      Register
-                    </button>
-                    <div className="text-primary mr-2 mt-2">
-                      <i className="far fa-calendar-alt mr-2"></i>
-                      <span className="text-primary">3 March 2023</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
-            <div className="px-4 py-5 flex-auto">
-              <div className="tab-content tab-space">
-                <div
-                  className={`flex flex-wrap items-center justify-between ${
-                    openTab === 1 ? "block" : "hidden"
-                  }`}
-                >
-                  <div className="flex flex-wrap items-center justify-between">
-                    <img
-                      className="flex-shrink-0 w-20 h-20 border rounded"
-                      src="https://images.unsplash.com/photo-1610552050890-fe99536c2615?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=907&q=80"
-                      alt=""
-                    />
-                    <div className="flex-wrap text-left ml-6">
-                      <h5 className="mb-3">C Fresh</h5>
-                      <span className="truncate flex items-center text-primary">
-                        <i className="fas fa-map-marker-alt mr-2"></i>
-                        IIIT Allahabad
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center flex-col justify-center">
-                    <button className=" bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-                      Register
-                    </button>
-                    <div className="text-primary mr-2 mt-2">
-                      <i className="far fa-calendar-alt mr-2"></i>
-                      <span className="text-primary">3 March 2023</span>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className={`flex flex-wrap items-center justify-between ${
-                    openTab === 2 ? "block" : "hidden"
-                  }`}
-                >
-                  <div className="flex flex-wrap items-center justify-between">
-                    <img
-                      className="flex-shrink-0 w-20 h-20 border rounded"
-                      src="https://images.unsplash.com/photo-1610552050890-fe99536c2615?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=907&q=80"
-                      alt=""
-                    />
-                    <div className="flex-wrap text-left ml-6">
-                      <h5 className="mb-3">C Fresh</h5>
-                      <span className="truncate flex items-center text-primary">
-                        <i className="fas fa-map-marker-alt mr-2"></i>
-                        IIIT Allahabad
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center flex-col justify-center">
-                    <button className=" bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-                      Register
-                    </button>
-                    <div className="text-primary mr-2 mt-2">
-                      <i className="far fa-calendar-alt mr-2"></i>
-                      <span className="text-primary">3 March 2023</span>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className={`flex flex-wrap items-center justify-between ${
-                    openTab === 3 ? "block" : "hidden"
-                  }`}
-                >
-                  <div className="flex flex-wrap items-center justify-between">
-                    <img
-                      className="flex-shrink-0 w-20 h-20 border rounded"
-                      src="https://images.unsplash.com/photo-1610552050890-fe99536c2615?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=907&q=80"
-                      alt=""
-                    />
-                    <div className="flex-wrap text-left ml-6">
-                      <h5 className="mb-3">C Fresh</h5>
-                      <span className="truncate flex items-center text-primary">
-                        <i className="fas fa-map-marker-alt mr-2"></i>
-                        IIIT Allahabad
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center flex-col justify-center">
-                    <button className=" bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-                      Register
-                    </button>
-                    <div className="text-primary mr-2 mt-2">
-                      <i className="far fa-calendar-alt mr-2"></i>
-                      <span className="text-primary">3 March 2023</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        
         </div>
       </div>
     </>
