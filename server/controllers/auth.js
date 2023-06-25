@@ -16,7 +16,7 @@ const login = async (req, res) => {
 
         const newUser = await User.create(data);
         const token = generateToken(username);
-        res.status(200).json({ token });
+        res.status(200).json({ token ,isAdmin:false});
       } else {
         res.status(401).json({ message: "Invalid Credentials" });
       }
@@ -28,14 +28,14 @@ const login = async (req, res) => {
       }
 
       const token = generateToken(username);
-      res.status(200).json({ token });
+      res.status(200).json({ token,isAdmin:user[0].isAdmin });
     }
   } catch (err) {
     console.log(err);
   }
 };
 
-const formatName = (name) => {
+  const formatName = (name) => {
   const nameParts = name
     .toLowerCase()
     .split(" ")

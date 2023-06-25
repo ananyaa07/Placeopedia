@@ -55,7 +55,7 @@ app.use(
   upload.single("image"),
   createOpportunity
 );
-app.use("/api/v1/opportunities", verifyUser, opportunitiesRouter);
+app.use("/api/v1/opportunities",opportunitiesRouter);
 app.use(
   "/api/v1/posts/new",
   verifyUser,
