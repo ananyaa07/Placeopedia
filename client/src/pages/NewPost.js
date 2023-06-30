@@ -12,18 +12,11 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 import { BlogContext } from "../utils/BlogContext";
 
-
-
-export default function NewBlog(props) {
+export default function NewPost() {
 	const editorRef = useRef(null);
-  const { newBlog } = useContext(BlogContext);
-
-	const [content, setContent] = useState("");
-	const id = localStorage.getItem("userId");
-	const [blog, setBlog] = useState({});
+	const { newBlog } = useContext(BlogContext);
 	const [selectedFile, setSelectedFile] = useState(null);
-	
-	const token = localStorage.getItem("token");
+	const token = localStorage.getItem("jwt_token");
 
 	const handleFileChange = (event) => {
 		setSelectedFile(event.target.files[0]);
@@ -32,14 +25,12 @@ export default function NewBlog(props) {
 
 	const log = async () => {
 		if (editorRef.current) {
-			setContent(editorRef.current.getContent());
 			const newBlogData = {
 				...newBlog,
 				content: editorRef.current.getContent(),
-				owner: id,
 			};
 			if (selectedFile) {
-				newBlogData.banner = selectedFile;
+				newBlogData.bannerImage = selectedFile;
 			}
 			await submitForm(newBlogData);
 		}
@@ -53,12 +44,11 @@ export default function NewBlog(props) {
 			for (let key in data) {
 				formData.append(key, data[key]);
 			}
-			
 
 			console.log("formData : ", formData);
 
 			const response = await axios.post(
-				"https://inter-api-8q0x.onrender.com/blog/create",
+				"http://localhost:3000/api/v1/posts/new",
 				formData,
 				{
 					headers: {
@@ -66,27 +56,15 @@ export default function NewBlog(props) {
 					},
 				}
 			);
-			console.log(response);
-
-			if (response.status === 200) message.success("Blog Posted Successfully!");
+			if (response.status === 200)
+				message.success("Milestone Posted Successfully!");
 
 			navigate("/home");
 		} catch (error) {
 			message.error("Something went wrong");
-			console.log(data);
 			console.error(error);
 		}
 	};
-
-	
-
-	useEffect(() => {
-		setBlog(JSON.parse(localStorage.getItem("newBlog")));
-	}, []);
-
-	useEffect(() => {
-		// console.log(blog);
-	}, [blog]);
 
 	return (
 		<>
@@ -99,7 +77,6 @@ export default function NewBlog(props) {
 					/>
 				)}
 				<div className="flex justify-end">
-
 					<label class="block mt-4">
 						<span class="sr-only">Choose profile photo</span>
 						<input
@@ -138,10 +115,10 @@ export default function NewBlog(props) {
 					</div>
 					<div className="justify-center ml-auto mr-auto">
 						<h2 className="font-extrabold text-2xl lg:text-5xl text-slate-800 lg:leading-[1.25] mr-12 lg:mr-auto">
-							{blog.title}
+							{newBlog.title}
 						</h2>
 						<p className="text-slate-600 mt-4 mr-12 lg:mr-auto mb-10">
-							{blog.brief}
+							{newBlog.brief}
 						</p>
 
 						<Editor

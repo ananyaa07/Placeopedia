@@ -14,10 +14,9 @@ export default function Homepage() {
       <NavbarH/>
       <HeroSection />
       <Features/>
-<Testimonials/>
-<Companies/>
-    <Footer/>
-     
+      <Testimonials/>
+      <Companies/>
+      <Footer/> 
 </>
     
   )

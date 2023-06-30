@@ -4,12 +4,11 @@ import { get, post, logout } from "./request";
 export async function loginUser(username, password) {
   let res = await post("/login", { username, password });
   if (res.status === 201 || res.status === 200) {
-    console.log(res.data);
     storeLS("jwt_token", res.data.token, true);
-    return Promise.resolve(res.data);
+    return Promise.resolve(res);
   }
   else if(res.status === 401) {
-    return Promise.resolve(res.data);
+    return Promise.resolve(res);
   }
 }
 

@@ -4,16 +4,35 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Navbar from "../components/NavbarL";
 import {loginUser} from "../utils/API/auth.js"
+import { UserContext } from "../utils/UserContext";
+import {Alert} from "antd";
+import { useNavigate } from "react-router";
 
 
-function Login({ setLoggedIn }) {
-	
+export default function  Login() {
+  const {setIsLoggedIn, setUser } = useContext(UserContext);
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
   const [password, setPassword] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
     loginUser(email,password)
     .then((res) => {
+      if(res.status === 200){
+        setIsLoggedIn(true);
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+        setUser(res.data.user);
+        navigate("/home");
+        return <Alert message="Login Success" type="success" showIcon />;
+      }
+      else{
+        return <Alert
+					message="Error"
+					description="Invalid Aviral Credentials"
+					type="error"
+					showIcon
+				/>;
+      }
     })
   }
 
@@ -27,8 +46,7 @@ function Login({ setLoggedIn }) {
   
 
   return (
-    <div className="bg-gradient-to-br from-gray-100 to-white-400 ">
-        <Navbar/>
+    <div className="bg-gradient-to-br from-gray-100 to-white-400 pt-8">
       <div className="block lg:flex items-center justify-center min-h-[90vh] overflow-y-hidden">
         <div className="block lg:flex flex-col mt-5 ">
          
@@ -61,7 +79,7 @@ function Login({ setLoggedIn }) {
                 name="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email address"
+                placeholder="Enter your Enrollment Number"
                 className="w-full px-4 py-3 bg-gray-200 border-gray-300 rounded-lg"
               />
             </div>
@@ -70,7 +88,7 @@ function Login({ setLoggedIn }) {
                 type={showPassword ? "text" : "password"}
                 id="password"
                 name="password"
-                placeholder="Enter password"
+                placeholder="Enter your Aviral Password"
                 className="w-full px-4 py-3 bg-gray-200 border-gray-300 rounded-lg"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -88,7 +106,7 @@ function Login({ setLoggedIn }) {
               </button>
             </div>
 
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center opacity-0">
               <div className="items-center hidden lg:flex">
                 <input
                   type="checkbox"
@@ -116,6 +134,3 @@ function Login({ setLoggedIn }) {
     </div>
   );
 }
-
-export default Login;
-

@@ -3,18 +3,13 @@ import {
 	faPlusCircle
 	
 } from "@fortawesome/free-solid-svg-icons";
-import {
-	
-
-
-} from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { Modal, Input, Select, Upload, Button } from "antd";
 import { useNavigate } from "react-router";
 import { useContext } from "react";
 import { BlogContext } from "../utils/BlogContext";
-import Tiny from "../pages/Tiny";
+import Tiny from "../pages/NewPost";
 const { Option } = Select;
 const { TextArea } = Input;
 
@@ -26,15 +21,7 @@ const CreatePost = (props) => {
 	const { newBlog, setNewBlog } = useContext(BlogContext);
 
 	const navigate = useNavigate();
-	const handleTagChange = (newTags) => {
-		setTags(newTags);
-	
-	};
 
-	const handleUploadChange = (info) => {
-		console.log(info.fileList[0]);
-		props.setBanner(info.fileList[0]);
-	};
 	const showModal = () => {
 		props.setModalVisible(true);
 	};
@@ -51,23 +38,17 @@ const CreatePost = (props) => {
 	};
 
 	const handleSubmit = () => {
-		localStorage.setItem("newBlog", JSON.stringify(data));
-		props.setBlog({
-			...props.blog,
+		setNewBlog({
 			...data,
-			tags,
 		});
-		setNewBlog(data);
 		props.setModalVisible(false);
-		console.log(
-		"Blog Object in Local Storage : ",newBlog);
-		navigate(`/tiny`);
+		navigate(`/newpost`);
 	};
 
 	useEffect(() => {
-		
-			setData({ ...data, tags });
-	}, [tags]);
+		console.log(
+		"Blog Object in Context : ",newBlog);
+	}, [newBlog]);
 
 	const uploadButton = (
 		<div>
@@ -107,22 +88,6 @@ const CreatePost = (props) => {
 						rows={4}
 						className="mb-4"
 					/>
-					<Select
-						mode="tags"
-						style={{ width: "100%" }}
-						value={tags}
-						onChange={handleTagChange}
-						placeholder="Blog Tags"
-						className="mb-4 bg-white"
-					>
-						<Option key="JavaScript">JavaScript</Option>
-						<Option key="React">React</Option>
-						<Option key="App Development">App Development</Option>
-						<Option key="Web Development">Web Development</Option>
-						<Option key="Web Development">Blockchain</Option>
-					</Select>
-
-					
 				</Modal>
 			</>
 		</>
