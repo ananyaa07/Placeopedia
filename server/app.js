@@ -55,13 +55,13 @@ app.use(
   upload.single("image"),
   createOpportunity
 );
-app.use("/api/v1/opportunities",opportunitiesRouter);
 app.use(
   "/api/v1/posts/new",
   verifyUser,
   upload.single("bannerImage"),
   createPost
-);
+  );
+app.use("/api/v1/opportunities",opportunitiesRouter);
 app.use("/api/v1/posts", verifyUser, postsRouter);
 app.use("/api/v1/login", authRouter);
 app.use("/api/v1/user", verifyUser, usersRouter);

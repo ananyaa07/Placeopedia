@@ -13,10 +13,9 @@ const login = async (req, res) => {
 
       if (data) {
         const updatedName = formatName(data.name).trim();
-
         const newUser = await User.create(data);
         const token = generateToken(username);
-        res.status(200).json({ token ,isAdmin:false});
+        res.status(200).json({ token , user : newUser});
       } else {
         res.status(401).json({ message: "Invalid Credentials" });
       }
@@ -28,7 +27,7 @@ const login = async (req, res) => {
       }
 
       const token = generateToken(username);
-      res.status(200).json({ token,isAdmin:user[0].isAdmin });
+      res.status(200).json({ token, user : user[0]});
     }
   } catch (err) {
     console.log(err);

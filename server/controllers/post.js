@@ -67,7 +67,7 @@ const getPost = async (req, res) => {
 
 const createPost = async (req, res) => {
     try {
-        const { title, brief, date, content} = req.body;
+        const { title, brief, content} = req.body;
         
         const randomImgName = (bytes = 16) => crypto.randomBytes(bytes).toString("hex");
         const imgName = randomImgName();
@@ -86,7 +86,7 @@ const createPost = async (req, res) => {
           owner : req.user._id,
           brief,
           bannerImage: imgName,
-          date,
+          date : Date.now(),
           content
         })
         await post.save();
