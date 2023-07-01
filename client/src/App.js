@@ -10,6 +10,7 @@ import BlogContextProvider from "./utils/BlogContext";
 import Profile from "./components/Profile";
 import { UserContext } from "./utils/UserContext";
 import { useContext } from "react";
+import Admin from "./pages/adminOpportunities";
 
 const App = () => {
 	const { isLoggedIn } = useContext(UserContext);
@@ -28,6 +29,7 @@ const App = () => {
 							<Route path="/home" element={<Placements />} />
 							<Route path="/newpost" element={<NewPost />} />
 							<Route path="/profile" element={<Profile />} />
+							<Route path="/admin" element={<Admin/>} />
 						</>
 					) : null}
 					<Route path="*" element={<Homepage />} />
