@@ -49,15 +49,9 @@ app.use(
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
+app.use("/api/v1/opportunities/new",verifyAdmin,upload.single("image"),createOpportunity);
 app.use(
-  "/api/v1/opportunities/new",
-  verifyAdmin,
-  upload.single("image"),
-  createOpportunity
-);
-app.use(
-  "/api/v1/posts/new",
-  verifyUser,
+  "/api/v1/posts/new",verifyUser,
   upload.single("bannerImage"),
   createPost
   );
