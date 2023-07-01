@@ -83,7 +83,7 @@ const createPost = async (req, res) => {
         const post = new Post({
           title,
           ownerName : req.user.name,
-          owner : req.user._id,
+          ownerId : req.user._id,
           brief,
           bannerImage: imgName,
           date : Date.now(),

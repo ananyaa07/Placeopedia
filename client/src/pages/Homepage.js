@@ -19,7 +19,7 @@ export default function Homepage() {
     {isLoggedIn ? <NavbarP/> : <NavbarH/>}
       <HeroSection />
       <Features/>
-      <Testimonials/>
+      <Testimonials/> 
       <Companies/>
       <Footer/> 
 </>
