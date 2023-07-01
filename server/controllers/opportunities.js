@@ -23,7 +23,7 @@ const s3 = new S3Client({
 const getAllOpportunities = async (req, res) => {
   try {
     const { category } = req.params;
-    const opportunities = await Opportunity.find({ category });
+    let opportunities = await Opportunity.find({ category });
     await Promise.all(
       opportunities.map(async (opportunity) => {
         const getObjectParams = {
@@ -37,6 +37,41 @@ const getAllOpportunities = async (req, res) => {
         return opportunity;
       })
     );
+
+    res.status(200).json({ opportunities });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+ const getAllOpportunitiesAdmin = async (req, res) => {
+  try {
+    const { category } = req.params;
+    let opportunities = await Opportunity.find({});
+    await Promise.all(
+      opportunities.map(async (opportunity) => {
+        const getObjectParams = {
+          Bucket: bucketName,
+          Key: opportunity.imageName,
+        };
+
+        const command = new GetObjectCommand(getObjectParams);
+        const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
+        opportunity.imageUrl = url;
+        await opportunity.save();
+      })
+    );
+
+    const events = await Opportunity.find({ category: "events" });
+    const internships = await Opportunity.find({ category: "internships" });
+    const hackathons = await Opportunity.find({ category: "hackathons" });
+
+    opportunities = {
+      events,
+      internships,
+      hackathons,
+    };
+
     res.status(200).json({ opportunities });
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -127,6 +162,7 @@ const deleteOpportunity = async (req, res) => {
 
 module.exports = {
   getAllOpportunities,
+  getAllOpportunitiesAdmin,
   createOpportunity,
   updateOpportunity,
   deleteOpportunity,

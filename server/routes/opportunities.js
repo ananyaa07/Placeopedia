@@ -3,6 +3,7 @@ const router = express.Router();
 
 const {
 	getAllOpportunities,
+	getAllOpportunitiesAdmin,
 	updateOpportunity,
 	deleteOpportunity,
 } = require("../controllers/opportunities");
@@ -14,5 +15,6 @@ router
 	.delete(verifyAdmin, deleteOpportunity);
     
 router.route("/:category").get(getAllOpportunities);
+router.route("/").get(verifyAdmin, getAllOpportunitiesAdmin);
 
 module.exports = router;
