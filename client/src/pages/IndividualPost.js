@@ -1,25 +1,12 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
-import { Editor } from "@tinymce/tinymce-react";
-// import post from "../assets/post.png"
-import post from "../assets/post.png";
-import blank from "../assets/blank_profile.jpeg";
-import profile from "../assets/profile.png";
 import axios from "axios";
-import {
-	faFacebook,
-	faTwitter,
-	faInstagram,
-	faLinkedin,
-} from "@fortawesome/free-brands-svg-icons";
 import { faShareNodes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Navbarhome from "./Navbarhome";
 import { Link, useParams } from "react-router-dom";
-import { Divider, message } from "antd";
-import ArticleLoader from "./Skeleton_Post";
-import moment from "moment";
-import { UserContext } from "../utils/context/UserContext";
+import { Avatar, Divider, message } from "antd";
+import ArticleLoader from "../components/Post_Skeleton";
 import { getPost } from "../utils/API/posts";
+import NavbarP from "../components/NavbarP";
 
 export default function IndividualPost() {
 
@@ -45,24 +32,23 @@ export default function IndividualPost() {
 	}, []);
 
 	useEffect(() => {
-		const getUser = async (id) => {
+		const getUser = async () => {
 			try {
-				// console.log(`Owner ID : ${id}`);
 				axios({
 					method: "get",
-					url: `http://localhost:3001/user/${post.post.ownerId}`,
+					url: `http://localhost:3000/api/v1/user/${post.post.ownerId}`,
 					headers: {
 						Authorization: `Bearer ${token}`,
 					},
 				}).then((response) => {
-					setUser(response.data);
+					setUser(response.data.user);
 				});
 			} catch (error) {
 				console.error(error);
 			}
 		};
 
-		if (post.post) getUser(post.post.owner);
+		if (post.post) getUser();
 	}, [post]);
 
 	const [isCopied, setIsCopied] = useState(false);
@@ -91,7 +77,7 @@ export default function IndividualPost() {
 
 	return (
 		<>
-			<Navbarhome />
+			<NavbarP/>
 			{loading && <ArticleLoader />}
 			{post.post && (
 				<div className=" lg:w-[70%] mr-auto ml-auto mt-12">
@@ -100,12 +86,14 @@ export default function IndividualPost() {
 						className=" ml-auto mr-auto w-[95%] max-h-96 object-contain"
 					></img>
 					<div className="flex items-center space-x-4 mt-4 lg:mt-12 lg:mb-6 mb-4 px-24">
-						{user.url && (
-							<img src={user.url} alt="" className="h-8 w-8 rounded-full" />
+						{user.name && (
+							<Avatar>
+								{user.name.substring(0, 1).toUpperCase()}
+							</Avatar>
 						)}
 						<p className="text-xs lg:text-sm text-slate-600">
-							{user.user && (
-								<Link to={`/user/${user.user._id}`}>{user.user.name}</Link>
+							{user.name && (
+								<Link to={`/user/${user._id}`}>{user.name}</Link>
 							)}
 						</p>
 					</div>

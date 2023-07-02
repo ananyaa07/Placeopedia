@@ -7,6 +7,7 @@ import {
   Button,
 } from "@material-tailwind/react";
 import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
+import { Link } from "react-router-dom";
 
 export default function Blog({ blog}) {
   return (
@@ -33,7 +34,7 @@ export default function Blog({ blog}) {
 					<Typography color="gray" className="font-normal mb-8">
 						{blog.brief}
 					</Typography>
-					<a href="#" className="inline-block">
+					<Link to={`/post/${blog._id}`}>
 						<Button
 							variant="text"
 							className="flex items-center text-black hover:bg-gray-200 bg-gray-100 gap-2"
@@ -41,7 +42,7 @@ export default function Blog({ blog}) {
 							Learn More
 							<ArrowLongRightIcon strokeWidth={2} className="w-4 h-4" />
 						</Button>
-					</a>
+					</Link>
 				</CardBody>
 			</Card>
 		</div>
