@@ -58,8 +58,8 @@ app.use(
 app.use("/api/v1/opportunities",opportunitiesRouter);
 app.use("/api/v1/posts", verifyUser, postsRouter);
 app.use("/api/v1/login", authRouter);
+app.use("/api/v1/user/:id/edit", verifyUser, upload.single("image"), editUser);
 app.use("/api/v1/user", verifyUser, usersRouter);
-app.use("/api/v1/user/:id", verifyUser, upload.single("image"), editUser);
 app.use("/api/v1/search", searchRouter);
 
 app.use(notFoundMiddleware);

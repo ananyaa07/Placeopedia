@@ -4,6 +4,7 @@ const {
     S3Client,
     PutObjectCommand,
     GetObjectCommand,
+    DeleteObjectCommand,
   } = require("@aws-sdk/client-s3");
   const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
   const crypto = require("crypto");
@@ -29,7 +30,7 @@ const {
     try {
       const { id } = req.params;
       const { briefDescription, name } = req.body;
-      let user = await User.findOne({ rollNumber: id });
+      let user = await User.findById(id);
   
       if (!user) {
         return res.status(404).json({ message: "User not found" });
