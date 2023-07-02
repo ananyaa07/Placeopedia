@@ -122,50 +122,48 @@ export default function EditUserModal({
 					/>
 				</div>
 				<Upload
-					accept="image/*"
-					name="image"
-					listType="picture-card"
-					className="image-uploader"
-					showUploadList={false}
-					beforeUpload={handleImageUpload}
-				>
-					{editUser.image ? (
-						<div className="relative rounded">
-							<img
-								src={URL.createObjectURL(editUser.image)}
-								alt="User"
-								style={{ width: "100%" }}
-								className="rounded"
-							/>
-							<div
-								className="absolute top-2 right-2 cursor-pointer"
-								onClick={() => setEditUser({ ...editUser, image: null })}
-							>
-								<div className="bg-white rounded-full p-1">
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke="currentColor"
-										className="h-5 w-5 text-red-500"
-									>
-										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											strokeWidth={2}
-											d="M6 18L18 6M6 6l12 12"
-										/>
-									</svg>
-								</div>
-							</div>
-						</div>
-					) : (
-						<div className="flex flex-col items-center justify-center rounded border-dashed border-gray-300 border-2 p-4">
-							<PlusOutlined className="text-4xl text-gray-500" />
-							<div className="text-gray-500">Upload</div>
-						</div>
-					)}
-				</Upload>
+  accept="image/*"
+  name="image"
+  listType="picture-card"
+  className="image-uploader"
+  showUploadList={false}
+  beforeUpload={handleImageUpload}
+>
+  {editUser.image ? (
+    <div className="relative scale-95 rounded w-36 h-36 overflow-hidden">
+      <img
+        src={URL.createObjectURL(editUser.image)}
+        alt="User"
+        className="rounded w-[90%] mt-6 h-[70%] object-cover"
+      />
+      <div className="absolute top-2 right-2 cursor-pointer">
+        <div className="bg-white rounded-full p-1">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            className="h-5 w-5 text-red-500"
+            onClick={() => setEditUser({ ...editUser, image: null })}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  ) : (
+    <div className="flex flex-col items-center justify-center rounded border-dashed border-gray-300 border-2 p-4">
+      <PlusOutlined className="text-4xl text-gray-500" />
+      <div className="text-gray-500">Upload</div>
+    </div>
+  )}
+</Upload>
+
 			</div>
 		</Modal>
 	);

@@ -10,11 +10,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { message } from "antd";
 import axios from "axios";
 import { useNavigate } from "react-router";
-import { BlogContext } from "../utils/BlogContext";
+import { PostContext } from "../utils/PostContext";
 
 export default function NewPost() {
 	const editorRef = useRef(null);
-	const { newBlog } = useContext(BlogContext);
+	const { newPost } = useContext(PostContext);
 	const [selectedFile, setSelectedFile] = useState(null);
 	const token = localStorage.getItem("jwt_token");
 
@@ -25,14 +25,14 @@ export default function NewPost() {
 
 	const log = async () => {
 		if (editorRef.current) {
-			const newBlogData = {
-				...newBlog,
+			const newPostData = {
+				...newPost,
 				content: editorRef.current.getContent(),
 			};
 			if (selectedFile) {
-				newBlogData.bannerImage = selectedFile;
+				newPostData.bannerImage = selectedFile;
 			}
-			await submitForm(newBlogData);
+			await submitForm(newPostData);
 		}
 	};
 
@@ -115,10 +115,10 @@ export default function NewPost() {
 					</div>
 					<div className="justify-center ml-auto mr-auto">
 						<h2 className="font-extrabold text-2xl lg:text-5xl text-slate-800 lg:leading-[1.25] mr-12 lg:mr-auto">
-							{newBlog.title}
+							{newPost.title}
 						</h2>
 						<p className="text-slate-600 mt-4 mr-12 lg:mr-auto mb-10">
-							{newBlog.brief}
+							{newPost.brief}
 						</p>
 
 						<Editor
@@ -148,7 +148,7 @@ export default function NewPost() {
 								onClick={log}
 								class="mt-8 mb-32 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
 							>
-								Post Blog
+								Post your Blog
 							</button>
 						</div>
 					</div>

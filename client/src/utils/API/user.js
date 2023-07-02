@@ -5,3 +5,4 @@ export async function getUser(id) {
     let res = await get(`/user/${id}`);
     return res.data;
 }
+

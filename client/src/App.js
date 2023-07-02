@@ -6,19 +6,20 @@ import Homepage from "./pages/Homepage";
 import Opportunities from "./pages/Opportunities";
 import Placements from "./pages/Placements";
 import NewPost from "./pages/NewPost";
-import BlogContextProvider from "./utils/BlogContext";
+import PostContextProvider from "./utils/PostContext";
 import Profile from "./pages/Profile";
 import { UserContext } from "./utils/UserContext";
 import { useContext } from "react";
 import Admin from "./pages/adminOpportunities";
+import { useEffect } from "react";
 import IndividualPost from "./pages/IndividualPost";
 
 const App = () => {
-	const { isLoggedIn } = useContext(UserContext);
-
+	const { isLoggedIn, user } = useContext(UserContext);
+	
 	return (
 		<BrowserRouter>
-			<BlogContextProvider>
+			<PostContextProvider>
 				<Routes>
 					<Route path="/" element={<Homepage />} />
 					<Route path="/login" element={<Login />} />
@@ -31,12 +32,17 @@ const App = () => {
 							<Route path="/newpost" element={<NewPost />} />
 							<Route path="/user/:id" element={<Profile />} />
 							<Route path="/post/:id" element={<IndividualPost />} />
-							<Route path="/admin" element={<Admin/>} />
 						</>
+					) : null}
+
+					{isLoggedIn && user.isAdmin===true ? (
+						<>
+							<Route path="/admin" element={<Admin />} />
+						</>	
 					) : null}
 					<Route path="*" element={<Homepage />} />
 				</Routes>
-			</BlogContextProvider>
+			</PostContextProvider>
 		</BrowserRouter>
 	);
 };

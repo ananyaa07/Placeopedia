@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import NavbarP from '../components/NavbarP';
-import Blog from '../components/Blog';
+import Post from '../components/Post';
 import { Modal, Input, Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import CreatePost from '../components/CreatePost';
@@ -8,13 +8,13 @@ import { getPosts } from "../utils/API/posts";
 const { TextArea } = Input;
 
 export default function Placements() {
-  const [blogs, setBlogs] = React.useState([]);
+  const [posts, setPosts] = React.useState([]);
 
   const getAllPosts = async () => {
     try {
       const response = await getPosts();
       console.log(response);
-      setBlogs(response.posts);
+      setPosts(response.posts);
     } catch (error) {
       console.log(error);
     }
@@ -34,16 +34,16 @@ export default function Placements() {
 
   return (
     <div className="bg-gray-50 min-h-screen">
-      <NavbarP />
+      <NavbarP setPosts={setPosts}/>
 
       {showCreatePost && (
         <CreatePost modalVisible={modalVisible} setModalVisible={setModalVisible}/>
       )}
 
       {
-        blogs?.map((post) => (
-          <Blog
-            blog = {post}
+        posts?.map((post) => (
+          <Post
+            post = {post}
             key={post._id}
           />
         ))

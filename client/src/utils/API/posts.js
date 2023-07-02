@@ -9,3 +9,9 @@ export async function getPost(id) {
     let res = await get(`/posts/${id}`);
     return res.data;
 }
+
+export async function getPostbyUser(id) {
+    let res = await get(`/posts/user/${id}`);
+    return res.data;
+}
+

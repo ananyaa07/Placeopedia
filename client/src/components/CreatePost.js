@@ -8,7 +8,7 @@ import React, { useEffect, useState } from "react";
 import { Modal, Input, Select, Upload, Button } from "antd";
 import { useNavigate } from "react-router";
 import { useContext } from "react";
-import { BlogContext } from "../utils/BlogContext";
+import { PostContext } from "../utils/PostContext";
 import Tiny from "../pages/NewPost";
 const { Option } = Select;
 const { TextArea } = Input;
@@ -18,7 +18,7 @@ const CreatePost = (props) => {
 	
 	const [data, setData] = useState({});
 	const [tags, setTags] = useState([]);
-	const { newBlog, setNewBlog } = useContext(BlogContext);
+	const { newPost, setNewPost } = useContext(PostContext);
 
 	const navigate = useNavigate();
 
@@ -38,7 +38,7 @@ const CreatePost = (props) => {
 	};
 
 	const handleSubmit = () => {
-		setNewBlog({
+		setNewPost({
 			...data,
 		});
 		props.setModalVisible(false);
@@ -47,8 +47,8 @@ const CreatePost = (props) => {
 
 	useEffect(() => {
 		console.log(
-		"Blog Object in Context : ",newBlog);
-	}, [newBlog]);
+		"Post Object in Context : ",newPost);
+	}, [newPost]);
 
 	const uploadButton = (
 		<div>
@@ -76,13 +76,13 @@ const CreatePost = (props) => {
 					]}
 				>
 					<Input
-						placeholder="Blog Title"
+						placeholder="Post Title"
 						className="mb-4"
 						name="title"
 						onChange={handleChange}
 					/>
 					<TextArea
-						placeholder="Blog Description"
+						placeholder="Post Description"
 						name="brief"
 						onChange={handleChange}
 						rows={4}
