@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getLS, removeLS } from "../localStorage";
 
-const API_URL = process.env.API_URL || "http://localhost:3001/api/v1";
+const API_URL = process.env.REACT_APP_PRODUCTION==="true"? process.env.REACT_APP_PRODUCTION_URL : process.env.REACT_APP_DEVELOPMENT_URL;
 
 const getAccessToken = () => getLS("jwt_token");
 
