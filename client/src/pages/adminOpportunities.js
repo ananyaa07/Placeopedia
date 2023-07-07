@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext} from "react";
 import NavbarA from "../components/NavbarA";
 import OpportunityItem from "../components/admin.js";
 import { getAllOpportunities } from "../utils/API/opportunities.js";
@@ -6,10 +6,12 @@ import axios from "axios";
 import { Modal, Button, Input, Upload } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import Header from "../components/headerofadmin.js";
+import {UserContext} from "../utils/UserContext.js"; 
 
 const Opportunities = () => {
   const [opportunities, setOpportunities] = useState({ events: [], internships: [], hackathons: [] });
   const [category, setCategory] = useState("events");
+  const { baseUrl } = useContext(UserContext);
 
   const [isCreating, setIsCreating] = useState(false);
 
@@ -27,7 +29,7 @@ const Opportunities = () => {
 
   const fetchOpportunities = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/v1/opportunities", {
+      const response = await axios.get(`${baseUrl}/opportunities`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("jwt_token")}`,
@@ -52,7 +54,7 @@ const Opportunities = () => {
         formData.append(key, newOpportunity[key]);
       }
 
-      const res = await axios.post("http://localhost:3000/api/v1/opportunities/new", formData, {
+      const res = await axios.post(`${baseUrl}/opportunities/new`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${localStorage.getItem("jwt_token")}`,

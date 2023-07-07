@@ -31,7 +31,7 @@ export default function Post({ post}) {
 						{post.title}
 					</Typography>
 					<Typography variant="h4" color="blue-gray" className="mb-2">
-						About the milestone
+						Written By- {post.ownerName}
 					</Typography>
 					<Typography color="gray" className="font-normal mb-8">
 						{post.brief}

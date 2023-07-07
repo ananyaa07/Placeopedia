@@ -11,10 +11,12 @@ import { message } from "antd";
 import axios from "axios";
 import { useNavigate } from "react-router";
 import { PostContext } from "../utils/PostContext";
+import {UserContext} from "../utils/UserContext.js"; 
 
 export default function NewPost() {
 	const editorRef = useRef(null);
 	const { newPost } = useContext(PostContext);
+	const { baseUrl } = useContext(UserContext);
 	const [selectedFile, setSelectedFile] = useState(null);
 	const token = localStorage.getItem("jwt_token");
 
@@ -48,7 +50,7 @@ export default function NewPost() {
 			console.log("formData : ", formData);
 
 			const response = await axios.post(
-				"http://localhost:3000/api/v1/posts/new",
+				`${baseUrl}/posts/new`,
 				formData,
 				{
 					headers: {

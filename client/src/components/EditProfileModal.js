@@ -3,6 +3,9 @@ import { Modal, Button, Input, Upload } from "antd";
 import { useState } from "react";
 import { PlusOutlined } from "@ant-design/icons";
 import axios from "axios";
+import { UserContext } from "../utils/UserContext";
+import { useContext } from "react";
+
 
 export default function EditUserModal({
 	isModalVisible,
@@ -20,10 +23,12 @@ export default function EditUserModal({
 		fetchUser();
 	}, []);
 
+	const { baseUrl } = useContext(UserContext);
+
 	const fetchUser = async () => {
 		try {
 			const response = await axios.get(
-				`http://localhost:3000/api/v1/user/${user._id}`,
+				`${baseUrl}/user/${user._id}`,
 				{
 					headers: {
 						"Content-Type": "application/json",
@@ -54,7 +59,7 @@ export default function EditUserModal({
 			}
 
 			const res = await axios.post(
-				`http://localhost:3000/api/v1/user/${user._id}/edit`,
+				`${baseUrl}/user/${user._id}/edit`,
 				formData,
 				{
 					headers: {

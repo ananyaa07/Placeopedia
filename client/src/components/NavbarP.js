@@ -8,6 +8,7 @@ import axios from "axios";
 
 export default function NavbarP({setPosts}) {
   const { user, setIsLoggedIn } = useContext(UserContext);
+  const { baseUrl } = useContext(UserContext);
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -23,7 +24,7 @@ export default function NavbarP({setPosts}) {
 
   const executeSearch = async () => {
     axios
-      .get(`http://localhost:3000/api/v1/search/${searchQuery}`, {
+      .get(`${baseUrl}/search/${searchQuery}`, {
         headers: {
 					"Content-Type": "application/json",
 					Authorization: `Bearer ${localStorage.getItem("jwt_token")}`,

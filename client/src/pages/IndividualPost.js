@@ -7,12 +7,14 @@ import { Avatar, Divider, message } from "antd";
 import ArticleLoader from "../components/Post_Skeleton";
 import { getPost } from "../utils/API/posts";
 import NavbarP from "../components/NavbarP";
+import {UserContext} from "../utils/UserContext.js"; 
 
 export default function IndividualPost() {
 
 	const [user, setUser] = useState({});
 	let postId = useParams().id;
 	const [post, setPost] = useState({});
+	const { baseUrl } = useContext(UserContext);
 	const token = localStorage.getItem("jwt_token");
 
 	const [loading, setLoading] = useState(true);
@@ -36,7 +38,7 @@ export default function IndividualPost() {
 			try {
 				axios({
 					method: "get",
-					url: `http://localhost:3000/api/v1/user/${post.post.ownerId}`,
+					url: `${baseUrl}/user/${post.post.ownerId}`,
 					headers: {
 						Authorization: `Bearer ${token}`,
 					},

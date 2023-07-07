@@ -3,9 +3,12 @@ import { FaEdit } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import antd, { Modal, Button, Input } from "antd";
+import { UserContext } from "../utils/UserContext";
+import { useContext } from "react";
 
 const OpportunityItem = ({ opportunity, setOpportunities }) => {
   const [isEditing, setIsEditing] = useState(false);
+  const { baseUrl } = useContext(UserContext);
   const [editedOpportunity, setEditedOpportunity] = useState({
     name: opportunity.name,
     registrationLink: opportunity.registrationLink,
@@ -15,7 +18,7 @@ const OpportunityItem = ({ opportunity, setOpportunities }) => {
 
   const fetchOpportunities = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/v1/opportunities", {
+      const response = await axios.get(`${baseUrl}/opportunities`, {
         headers: {
 					"Content-Type": "application/json",
 					Authorization: `Bearer ${localStorage.getItem("jwt_token")}`,
@@ -35,7 +38,7 @@ const OpportunityItem = ({ opportunity, setOpportunities }) => {
   const handleSaveClick = async () => {
     try {
       await axios.patch(
-        `http://localhost:3000/api/v1/opportunities/admin/${opportunity._id}`,
+        `${baseUrl}/opportunities/admin/${opportunity._id}`,
         editedOpportunity,
         {
           headers: {
@@ -64,7 +67,7 @@ const OpportunityItem = ({ opportunity, setOpportunities }) => {
   const handleDeleteClick = async () => {
     try {
       await axios.delete(
-        `http://localhost:3000/api/v1/opportunities/admin/${opportunity._id}`,
+        `${baseUrl}/opportunities/admin/${opportunity._id}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("jwt_token")}`,
