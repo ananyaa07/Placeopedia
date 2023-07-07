@@ -91,20 +91,35 @@ const {
   };
   
   
-  
+
   const getUser = async (req, res) => {
     try {
-      const user = await User.findOne(req.params.username);
-  
-      if (user.length === 0) {
-        res.status(404).json({ message: "User not found" });
-      } else {
-        res.status(200).json({ user });
+let user = await User.findById(req.params.id);
+
+      if (!user) {
+        return res.status(404).json({ error: "User not found" });
       }
-    } catch (err) {
-      console.log(err);
-      res.status(500).json({ message: "Internal server error" });
+
+      const getObjectParams = {
+        Bucket: bucketName,
+        Key: user.imageName,
+      }
+
+      const command = new GetObjectCommand(getObjectParams);
+      const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
+
+      user.imageUrl = url;
+      await user.save();
+     
+
+      res.status(200).json({ user });
+      
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ error: error.message });
     }
-  };
+  }
+
+
 
     module.exports = { getUser, editUser };
